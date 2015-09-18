@@ -17,4 +17,16 @@ Meteor.startup(function() {
       });
     });
   }
-});
+
+  if(Surplusses.find().count() === 0) {
+    var surplusses = [];
+    
+    surplusses.forEach(function(surpluss) {
+      Surplusses.insert({
+      name: surpluss,
+      name_sort: surpluss.toLowerCase(),
+      createdAt: new Date()
+      })
+    })
+  }
+})

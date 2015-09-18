@@ -1,4 +1,5 @@
 Things = new Mongo.Collection('things');
+Surplusses = new Mongo.Collection('surplusses')
 
 Things.allow({
   insert: function(userId, thing) {
@@ -13,6 +14,27 @@ Things.allow({
   },
   remove: function(userId, thing) {
     return userId && thing.owner === userId;
+  }
+});
+
+Surplusses.allow({
+  insert: function(userId, surpluss) {
+    console.log(surpluss)
+    surpluss.createdAt = new Date();
+    surpluss.name_sort = surpluss.name.toLowerCase();
+    return userId && surpluss.owner === userId;
+    
+
+  },
+  update: function(userId, surpluss, fields, modifier) {
+    surpluss.createdAt = new Date();
+    surpluss.name_sort = surpluss.name.toLowerCase();
+    return userId && surpluss.owner === userId ;
+    
+  },
+  remove: function(userId, surpluss) {
+    return userId && surpluss.owner === userId;
+    
   }
 });
 
