@@ -5,8 +5,10 @@
     <p class="input-group">
       <input type="text" placeholder="Lab Name" ng-model="newThing.name" class="form-control"/>
       <input type="text" placeholder="Lab Needs" ng-model="newThing.labNeeds" class="form-control"/>
-      <input type="text" placeholder="Day/Times Needed" ng-model="newThing.dayTimeNeeds" class="form-control"/><span class="input-group-btn">
-        <input type="submit" value="Add" class="btn btn-primary"/></span>
+      <input type="text" placeholder="Day/Times Needed" ng-model="newThing.dayTimeNeeds" class="form-control"/>
+      <input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newThing.contactInfo" class="form-control"/>
+      <span class="input-group-btn">
+        <input ng-click="newThing.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
     </p>
   </form>
   <div class="panel panel-default">
@@ -26,6 +28,7 @@
           <p> <strong>Lab Name:</strong> {{ thing.name }} <br>
           <strong>Lab Needs:</strong> {{ thing.labNeeds }} <br>
           <strong>Days Needed:</strong> {{ thing.dayTimeNeeds }}<br>
+          <strong>Lab Manager Contact Info:</strong> {{ thing.contactInfo }}<br>
 
             <button ng-click="remove(thing)" class="btn">Need Met</button>
           </p>
