@@ -1,17 +1,17 @@
 <div class="main container">
 Lab Surplusses page
 
-{{ greeting }}
 	<h1>Lab Surplusses</h1>
 	<p> Please fill out the form with your employees most relevant skills </p>
 	<form ng-submit="save()" name="form" novalidate="" class="thing-form">
 		<p class="input-group">
 			<input type="text" placeholder="Lab Name" ng-model="newSurpluss.name" class="form-control"/>
-       		<input type="text" placeholder="Available Employees' Skills" ng-model="newSurpluss.skills" class="form-control"/>
-     		<input type="text" placeholder="Day/Times Available" ng-model="newSurpluss.dayTimeAvailability" class="form-control"/>
-      		<input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newSurpluss.contactInfo" class="form-control"/>
-      		<span class="input-group-btn">
-        	<input ng-click="newSurpluss.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
+      <input type="text" placeholder="Available Employees' Skills" ng-model="newSurpluss.skills" class="form-control"/>
+     	<input type="text" placeholder="Day/Times Available" ng-model="newSurpluss.dayTimeAvailability" class="form-control"/>
+      <input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newSurpluss.contactInfo" class="form-control"/>
+      Attach empoloyee's resume here:<input type="file"  ng-model="newThing.resume" class="form-control ng-pristine ng-valid ng-touched">
+      <span class="input-group-btn">
+      <input ng-click="newSurpluss.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
     	</p>
     </form>
      <div class="panel panel-default">
@@ -32,6 +32,7 @@ Lab Surplusses page
           <strong>Employee Skills:</strong> {{ surpluss.skills }} <br>
           <strong>Days Available:</strong> {{ surpluss.dayTimeAvailability }}<br>
           <strong>Lab Manager Contact Info:</strong> {{ surpluss.contactInfo }}<br>
+          {{ surpluss.resume }} <br>
 
             <button ng-click="remove(surpluss)" class="btn">Need Met</button>
           </p>
@@ -40,5 +41,9 @@ Lab Surplusses page
       <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-md-12"></dir-pagination-controls>
     </div>
   </div>
-  <p>Total number of available employees: {{thingsCount.count}}</p>
+<form>
+<input type = "text" placeholder="add your email address to stay up to date on employees available" class = "form-control">
+</form>
+<button class="btn">Add</button>
 </div>
+

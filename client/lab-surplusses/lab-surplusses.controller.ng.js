@@ -32,18 +32,18 @@ angular.module('timeshareApp')
 	    }
 	  };
       
-	$scope.remove = function(surpluss) {
-	   $scope.surplusses.remove(surpluss);
-	};
-	   
-	$scope.pageChanged = function(newPage) {
-	   $scope.page = newPage;
-	};
-	   
-	$scope.$watch('orderProperty', function() {
-	   if($scope.orderProperty) {
-	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
-	}
-	$scope.greeting = 'SURPLUSSI MUTHA'	
-	});
+  	$scope.remove = function(surpluss) {
+  	   $scope.surplusses.remove(surpluss);
+  	};
+  	   
+  	$scope.pageChanged = function(newPage) {
+  	   $scope.page = newPage;
+  	};
+  	   
+  	$scope.$watch('orderProperty', function() {
+  	   if($scope.orderProperty) {
+  	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
+  	}
+  	$scope.greeting = 'SURPLUSSI MUTHA'	
+  	});
 });
