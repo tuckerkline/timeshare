@@ -31,6 +31,13 @@ angular.module('timeshareApp')
     	  	// console.log($scope)
 	    }
 	  };
+
+    $scope.emails = []
+    $scope.addEmail = function() {
+      $scope.emails.push($scope.emailAdder)
+      $scope.emailAdder = ""
+    }
+
       
   	$scope.remove = function(surpluss) {
   	   $scope.surplusses.remove(surpluss);

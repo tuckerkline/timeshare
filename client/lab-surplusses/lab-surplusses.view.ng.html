@@ -9,7 +9,7 @@ Lab Surplusses page
       <input type="text" placeholder="Available Employees' Skills" ng-model="newSurpluss.skills" class="form-control"/>
      	<input type="text" placeholder="Day/Times Available" ng-model="newSurpluss.dayTimeAvailability" class="form-control"/>
       <input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newSurpluss.contactInfo" class="form-control"/>
-      Attach empoloyee's resume here:<input type="file"  ng-model="newThing.resume" class="form-control ng-pristine ng-valid ng-touched">
+      Attach empoloyee's resume here:<input type="file"  ng-model="newSurpluss.resume" class="form-control ng-pristine ng-valid ng-touched">
       <span class="input-group-btn">
       <input ng-click="newSurpluss.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
     	</p>
@@ -42,8 +42,13 @@ Lab Surplusses page
     </div>
   </div>
 <form>
-<input type = "text" placeholder="add your email address to stay up to date on employees available" class = "form-control">
+<input type = "text" placeholder="add your email address to stay up to date on employees available" class = "form-control" ng-model = 'emailAdder'>
 </form>
-<button class="btn">Add</button>
+<button class="btn" ng-click="addEmail()">Add</button>
+<ul ng-repeat = 'email in emails'>
+<li>
+{{$index + 1}} {{ email }}
+</li>
+</ul>
 </div>
 
