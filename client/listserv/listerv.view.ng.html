@@ -1,0 +1,24 @@
+<div class = "main container">
+<h1>Stay up to date by join our listserv</h1>
+
+
+	<form ng-submit="save()" name="form" novalidate="" class="thing-form">
+		<p class="input-group">
+		<label>Add your email address to keep up with software changes and to get updated lists of available employees:</label>
+		<input type="text" placeholder="email address" ng-model="newEmail.email" class="form-control"/> 
+		<div class="input-group-btn">
+      <input ng-click="newEmail.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></div>
+    	</p>
+    </form>
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+    <ul ng-repeat = "thing in emails track by $index">
+    	<li> {{ thing.email }} <button ng-click="remove($index)">x</button></li>
+    	</ul>
+
+    </div>
+  </div>
+</div>
+
+

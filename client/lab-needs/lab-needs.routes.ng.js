@@ -7,5 +7,5 @@ angular.module('timeshareApp')
     url: '/lab-needs',
     templateUrl: 'client/lab-needs/lab-needs.view.ng.html',
     controller: 'lab-needsCtrl'
-  });
+  }); 
 });

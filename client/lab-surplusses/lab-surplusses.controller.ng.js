@@ -27,22 +27,15 @@ angular.module('timeshareApp')
     	if($scope.form.$valid) {
       		$scope.surplusses.save($scope.newSurpluss);
     	  	$scope.newSurpluss = undefined;
-
-    	  	// console.log($scope)
 	    }
 	  };
 
-    $scope.emails = []
-    $scope.addEmail = function() {
-      $scope.emails.push($scope.emailAdder)
-      $scope.emailAdder = ""
-    }
-
-      
+    
   	$scope.remove = function(surpluss) {
   	   $scope.surplusses.remove(surpluss);
   	};
-  	   
+
+
   	$scope.pageChanged = function(newPage) {
   	   $scope.page = newPage;
   	};
@@ -50,7 +43,11 @@ angular.module('timeshareApp')
   	$scope.$watch('orderProperty', function() {
   	   if($scope.orderProperty) {
   	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
-  	}
-  	$scope.greeting = 'SURPLUSSI MUTHA'	
+  	   }
   	});
 });
+
+
+
+// Attach empoloyee's resume here:<input type="file"  ng-model="newSurpluss.resume" class="form-control ng-pristine ng-valid ng-touched" name=" file"> 
+// <button ng-click="addResume()">add</button>

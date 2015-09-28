@@ -1,17 +1,15 @@
 <div class="main container">
-Lab Surplusses page
 
 	<h1>Lab Surplusses</h1>
-	<p> Please fill out the form with your employees most relevant skills </p>
+	<p> Please fill out the form with your employees most relevant skills. </p>
 	<form ng-submit="save()" name="form" novalidate="" class="thing-form">
 		<p class="input-group">
 			<input type="text" placeholder="Lab Name" ng-model="newSurpluss.name" class="form-control"/>
-      <input type="text" placeholder="Available Employees' Skills" ng-model="newSurpluss.skills" class="form-control"/>
+      <input type="text" placeholder="Available Employees' Training" ng-model="newSurpluss.skills" class="form-control"/>
      	<input type="text" placeholder="Day/Times Available" ng-model="newSurpluss.dayTimeAvailability" class="form-control"/>
       <input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newSurpluss.contactInfo" class="form-control"/>
-      Attach empoloyee's resume here:<input type="file"  ng-model="newSurpluss.resume" class="form-control ng-pristine ng-valid ng-touched">
-      <span class="input-group-btn">
-      <input ng-click="newSurpluss.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
+      <div class="input-group-btn">
+      <input ng-click="newSurpluss.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></div>
     	</p>
     </form>
      <div class="panel panel-default">
@@ -29,11 +27,11 @@ Lab Surplusses page
       <ul class="nav nav-tabs nav-stacked col-md-9 col-sm-12">
         <li dir-paginate="surpluss in surplusses | itemsPerPage: perPage" total-items="surplussCounter.count" current-page='page'>
           <p> <strong>Lab Name:</strong> {{ surpluss.name }} <br>
-          <strong>Employee Skills:</strong> {{ surpluss.skills }} <br>
+          <strong>Employee Training:</strong> {{ surpluss.skills }} <br>
           <strong>Days Available:</strong> {{ surpluss.dayTimeAvailability }}<br>
           <strong>Lab Manager Contact Info:</strong> {{ surpluss.contactInfo }}<br>
-          {{ surpluss.resume }} <br>
 
+<br>
             <button ng-click="remove(surpluss)" class="btn">Need Met</button>
           </p>
         </li>
@@ -41,14 +39,10 @@ Lab Surplusses page
       <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-md-12"></dir-pagination-controls>
     </div>
   </div>
-<form>
-<input type = "text" placeholder="add your email address to stay up to date on employees available" class = "form-control" ng-model = 'emailAdder'>
-</form>
-<button class="btn" ng-click="addEmail()">Add</button>
-<ul ng-repeat = 'email in emails'>
-<li>
-{{$index + 1}} {{ email }}
-</li>
-</ul>
+
+
+<hr>
+
+
 </div>
 

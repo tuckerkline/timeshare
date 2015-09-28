@@ -1,14 +1,15 @@
 
 <div class="main container">
   <h1>Lab Needs</h1>
+  <p>If your lab needs temporary help, please make a post in here.</p>
   <form ng-submit="save()" name="form" novalidate="" class="thing-form">
     <p class="input-group">
       <input type="text" placeholder="Lab Name" ng-model="newThing.name" class="form-control"/>
       <input type="text" placeholder="Lab Needs" ng-model="newThing.labNeeds" class="form-control"/>
       <input type="text" placeholder="Day/Times Needed" ng-model="newThing.dayTimeNeeds" class="form-control"/>
       <input type="text" placeholder="Lab Manager Contact Info (email address or work phone number)" ng-model="newThing.contactInfo" class="form-control"/>
-      <span class="input-group-btn">
-        <input ng-click="newThing.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></span>
+      <div class="input-group-btn">
+        <input ng-click="newThing.owner=$root.currentUser._id;" type="submit" value="Add" class="btn btn-primary"/></div>
     </p>
   </form>
   <div class="panel panel-default">
@@ -37,5 +38,4 @@
       <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-md-12"></dir-pagination-controls>
     </div>
   </div>
-  <p>Total number of needs: {{thingsCount.count}}</p>
 </div>
