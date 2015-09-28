@@ -22,15 +22,15 @@ Meteor.startup(function() {
     })
   }
 
-  // if(Emails.find().count() === 0) {
-  //   var emails = [];
+  if(Emails.find().count() === 0) {
+    var emails = [];
     
-  //   emails.forEach(function(email) {
-  //     Emails.insert({
-  //     name: email,
-  //     name_sort: email.toLowerCase(),
-  //     createdAt: new Date()
-  //     })
-  //   })
-  // }
+    emails.forEach(function(email) {
+      Emails.insert({
+      name: email,
+      name_sort: email.toLowerCase(),
+      createdAt: new Date()
+      })
+    })
+  }
 })

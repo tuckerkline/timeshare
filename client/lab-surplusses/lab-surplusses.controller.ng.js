@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('timeshareApp')
 .controller('labSurplussesCtrl', function($scope, $meteor) {
 	$scope.viewName = 'Lab-Surplusses';

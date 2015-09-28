@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('timeshareApp')
 .controller('listServCtrl', function($scope, $meteor)  {
 	$scope.viewName = "ListServ-Emails"
@@ -8,32 +9,34 @@ angular.module('timeshareApp')
 	$scope.sort = {name_sort : 1};
 	$scope.orderProperty = '1';
 
-	// $scope.emails = $meteor.collection(Emails)
-    //     return Emails.find({}, {sort:$scope.getReactively('sort')});
-    // });
-
-    //  $meteor.autorun($scope, function() {
-    //  $scope.$meteorSubscribe('emails', {
-    //      limit: parseInt($scope.getReactively('perPage')),
-    //      skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage')),
-    //      sort: $scope.getReactively('sort')
-    //  },  $scope.getReactively('search')).then(function() {
-    //      $scope.emailsCount = $scope.$meteorObject(Counts, 'numberOfEmails', false);
-    //  });
-    // });
-
-    // $meteor.session('emailsCounter').bind($scope, 'page');
 
 
- 	$scope.emails = []
+	$scope.emails = $meteor.collection(function() {
+      return Emails.find({}, {sort:$scope.getReactively('sort')});
+    });
+
+     $meteor.autorun($scope, function() {
+     $scope.$meteorSubscribe('emails', {
+         limit: parseInt($scope.getReactively('perPage')),
+         skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage')),
+         sort: $scope.getReactively('sort')
+     },  $scope.getReactively('search')).then(function() {
+         $scope.emailsCount = $scope.$meteorObject(Counts, 'numberOfEmails', false);
+     });
+    });
+
+    $meteor.session('emailsCounter').bind($scope, 'page');
+
+
+ 	// $scope.emails = []
     $scope.save = function() {
       if($scope.form.$valid) {
-        $scope.emails.push($scope.newEmail)
+        $scope.emails.save($scope.newEmail)
         $scope.newEmail = undefined;
       }
     };
-    $scope.remove = function(index) {
-    	$scope.emails.splice(index, 1);
+    $scope.remove = function(thing) {
+    	$scope.emails.remove(thing);
     }
 
     $scope.pageChanged = function(newPage) {

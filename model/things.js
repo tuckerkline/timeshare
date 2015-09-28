@@ -46,18 +46,18 @@ Emails.allow({
     console.log(email)
     email.createdAt = new Date();
     email.name_sort = email.name.toLowerCase();
-    return userId && surpluss.owner === userId;
+    return userId && email.owner === userId;
     
 
   },
   update: function(userId, email, fields, modifier) {
     email.createdAt = new Date();
     email.name_sort = email.name.toLowerCase();
-    return userId && surpluss.owner === userId;
+    return userId && email.owner === userId;
     
   },
   remove: function(userId, email) {
-    return userId && surpluss.owner === userId;
+    return userId && email.owner === userId;
     
   }
 });
