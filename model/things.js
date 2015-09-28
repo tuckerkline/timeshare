@@ -1,6 +1,15 @@
+
 Emails = new Mongo.Collection('emails');
+
+
 Things = new Mongo.Collection('things');
 Surplusses = new Mongo.Collection('surplusses');
+
+
+
+
+
+
 
 
 Things.allow({
@@ -61,6 +70,8 @@ Emails.allow({
     
   }
 });
+
+
 
 
 //to make it so don't need to be logged in change all three returns to 'true'

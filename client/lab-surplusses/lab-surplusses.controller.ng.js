@@ -2,7 +2,7 @@
 
 
 angular.module('timeshareApp')
-.controller('labSurplussesCtrl', function($scope, $meteor) {
+.controller('labSurplussesCtrl', function($scope, $meteor, dataFactory) {
 	$scope.viewName = 'Lab-Surplusses';
     $scope.page = 1;
     $scope.perPage = 10;
@@ -12,6 +12,23 @@ angular.module('timeshareApp')
     $scope.surplusses = $scope.$meteorCollection(function () {
     	return Surplusses.find({}, {sort:$scope.getReactively('sort')});
     });
+
+    $scope.things = $scope.$meteorCollection(function() {
+      return Things.find({}, {sort:$scope.getReactively('sort')})
+    })
+
+
+    var test = []
+    for (var i = 0; i < $scope.things.length; i++) {
+      for (var key in $scope.things[i]) {
+        if (key == 'name') {
+          test.push(key)
+        }
+      }
+    }
+
+    console.log(test)
+    // console.log($scope.things)
 
     $meteor.autorun($scope, function() {
     	$scope.$meteorSubscribe('surplusses', {
@@ -28,6 +45,8 @@ angular.module('timeshareApp')
     	if($scope.form.$valid) {
       		$scope.surplusses.save($scope.newSurpluss);
     	  	$scope.newSurpluss = undefined;
+        
+
 	    }
 	  };
 
@@ -46,6 +65,12 @@ angular.module('timeshareApp')
   	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
   	   }
   	});
+
+    // console.log(dataFactory)
+
+     
+
+
 });
 
 
