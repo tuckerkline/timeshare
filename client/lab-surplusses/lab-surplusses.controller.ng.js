@@ -26,7 +26,7 @@ angular.module('timeshareApp')
         $scope.needs.push(needsObject)
     }
 
-    console.log($scope.needs)
+    // console.log($scope.needs)
 
     $scope.match = false
     var matcher = function(input) {
@@ -37,7 +37,7 @@ angular.module('timeshareApp')
         for (var x = 0; x < haves.length; x++) {
             for (var y = 0; y < $scope.needs.length; y++) {
                 if (haves[x].toLowerCase() == $scope.needs[y].labNeeds.toLowerCase()) {
-                    console.log('you have a match')
+                    // console.log('you have a match')
                     $scope.greeting = $scope.needs[y].contactInfo
                     $scope.match = true
                 }

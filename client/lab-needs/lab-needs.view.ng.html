@@ -38,4 +38,11 @@
       <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-md-12"></dir-pagination-controls>
     </div>
   </div>
+
+        <div class = "popupBG2" ng-show="match2">
+      <div class = "popup2">
+  <p>you have a potential match! here's the lab manager's contact information: {{ matchMessage }}</p>
+  <button ng-click = "close2()" class = "btn btn-danger">x</button>
+</div>
+</div>
 </div>
