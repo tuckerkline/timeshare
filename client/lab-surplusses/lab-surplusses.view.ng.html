@@ -13,7 +13,7 @@
     	</p>
     </form>
 
-    
+
      <div class="panel panel-default">
     <div class="panel-body">
       <div class="input-group pull-right col-md-3 col-sm-12">
@@ -43,8 +43,11 @@
     </div>
   </div>
 
-      <div class = "match" ng-show="match">
-  <p>you have a potential match! here's the lab manager's contact information {{things.contactInfo}}</p>
+      <div class = "popupBG" ng-show="match">
+      <div class = "popup">
+  <p>you have a potential match! here's the lab manager's contact information: {{ greeting }}</p>
+  <button ng-click = "close()" class = "btn btn-danger">x</button>
+</div>
 </div>
   
 

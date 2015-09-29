@@ -18,12 +18,15 @@ angular.module('timeshareApp')
     })
 
 
-    var needs = []
-    var needsOwner = []
+    $scope.needs = []
     for (var i = 0; i < $scope.things.length; i++) {
-        needs.push($scope.things[i].labNeeds)
+        var needsObject = {}
+        needsObject.labNeeds = $scope.things[i].labNeeds
+        needsObject.contactInfo = $scope.things[i].contactInfo
+        $scope.needs.push(needsObject)
     }
-    console.log(needs)
+
+    console.log($scope.needs)
 
     $scope.match = false
     var matcher = function(input) {
@@ -32,9 +35,10 @@ angular.module('timeshareApp')
         // console.log(haves)
         
         for (var x = 0; x < haves.length; x++) {
-            for (var y = 0; y < needs.length; y++) {
-                if (haves[x].toLowerCase() == needs[y].toLowerCase()) {
+            for (var y = 0; y < $scope.needs.length; y++) {
+                if (haves[x].toLowerCase() == $scope.needs[y].labNeeds.toLowerCase()) {
                     console.log('you have a match')
+                    $scope.greeting = $scope.needs[y].contactInfo
                     $scope.match = true
                 }
             }
@@ -75,6 +79,9 @@ angular.module('timeshareApp')
   	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
   	   }
   	});
+    $scope.close = function () {
+        $scope.match = false
+    }
 });
 
 
