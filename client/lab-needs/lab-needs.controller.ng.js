@@ -11,6 +11,11 @@ angular.module('timeshareApp')
   $scope.things = $scope.$meteorCollection(function() {
     return Things.find({}, {sort:$scope.getReactively('sort')});
   });
+
+  $scope.surplusses = $scope.$meteorCollection(function () {
+     return Surplusses.find({}, {sort:$scope.getReactively('sort')});
+  });
+  
   $meteor.autorun($scope, function() {
     $scope.$meteorSubscribe('things', {
       limit: parseInt($scope.getReactively('perPage')),

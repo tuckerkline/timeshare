@@ -1,7 +1,4 @@
-
 Emails = new Mongo.Collection('emails');
-
-
 Things = new Mongo.Collection('things');
 Surplusses = new Mongo.Collection('surplusses');
 

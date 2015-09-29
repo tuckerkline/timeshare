@@ -7,7 +7,7 @@ angular.module('timeshareApp')
     $scope.page = 1;
     $scope.perPage = 10;
     $scope.sort = {name_sort : 1};
-    $scope.orderProperty = '1';
+    $scope.orderProperty = '1'; 
 
     $scope.surplusses = $scope.$meteorCollection(function () {
     	return Surplusses.find({}, {sort:$scope.getReactively('sort')});
@@ -18,17 +18,28 @@ angular.module('timeshareApp')
     })
 
 
-    var test = []
+    var needs = []
+    var needsOwner = []
     for (var i = 0; i < $scope.things.length; i++) {
-      for (var key in $scope.things[i]) {
-        if (key == 'name') {
-          test.push(key)
-        }
-      }
+        needs.push($scope.things[i].labNeeds)
     }
+    console.log(needs)
 
-    console.log(test)
-    // console.log($scope.things)
+    $scope.match = false
+    var matcher = function(input) {
+        var haves = []
+        haves.push(input.skills)
+        // console.log(haves)
+        
+        for (var x = 0; x < haves.length; x++) {
+            for (var y = 0; y < needs.length; y++) {
+                if (haves[x].toLowerCase() == needs[y].toLowerCase()) {
+                    console.log('you have a match')
+                    $scope.match = true
+                }
+            }
+        }
+    }
 
     $meteor.autorun($scope, function() {
     	$scope.$meteorSubscribe('surplusses', {
@@ -44,9 +55,8 @@ angular.module('timeshareApp')
     $scope.save = function() {
     	if($scope.form.$valid) {
       		$scope.surplusses.save($scope.newSurpluss);
-    	  	$scope.newSurpluss = undefined;
-        
-
+            matcher($scope.newSurpluss)
+            $scope.newSurpluss = undefined;
 	    }
 	  };
 
@@ -65,13 +75,12 @@ angular.module('timeshareApp')
   	     $scope.sort = {name_sort: parseInt($scope.orderProperty)};
   	   }
   	});
-
-    // console.log(dataFactory)
-
-     
-
-
 });
+
+
+    // var currentUser = Meteor.userId()
+
+    // var owner = $scope.newSurpluss.owner
 
 
 
